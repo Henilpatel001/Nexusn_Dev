@@ -39,7 +39,7 @@ const multer  = require('multer');//use for take input as image and store to our
 //         return cb(null, `${Date.now()}-${file.originalname}`);
 //     }
 // })
-const {storage}=require("../Expressdir/cloudConfig.js");
+const {storage}=require("./cloudConfig.js");
 const upload = multer({ storage: storage })//to upload file
 
 
