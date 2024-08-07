@@ -14,10 +14,10 @@ const eveView=<%-JSON.stringify(eveView)%>;
                     <p class="eventsView_Heading">Event_Name: <%=eveView.eventName %></p><br>
                     <p class="eventsView_Heading">Event_Description: <%=eveView.description %></p><br>
                     <p class="eventsView_Heading">Event_Location: <%=eveView.location %></p><br>
-                    <!-- <img src="<%=eveView.img.url%>" width="100%" height="150"> -->
                     <div id="map"></div>
                 </div>
-                <img src="/images/123.webp" alt="image" height="auto" width="400">
+                <!-- <img src="/images/123.webp" alt="image" height="auto" width="400"> -->
+                <img src="<%=eveView.img.url%>" alt="image" height="auto" width="400">
             </div>
         </div>
     </div>
