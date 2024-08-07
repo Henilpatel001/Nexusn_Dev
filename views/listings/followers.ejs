@@ -1,0 +1,56 @@
+<% layout("/layouts/header") %>
+<body>
+        <div class="bodybox">
+            <div class="box">
+                <div class="followbox">
+                    <div class="followtitle">
+                        <button id="folltit1">Invitation</button>
+                        <button id="folltit2">Groups</button>
+                    </div>
+                    
+                    <div id="self" style="display: none;"><%=currUser.username%></div>
+                    <!-- Related Page 1 -->
+                    <div class="related-page" id="relatedPage1">
+                        <div class="followcontent">
+                            <% for(let info of selfInfo.requested) {%>
+                                    <div class="folluser">
+                                        <a href="<%=info%>" style="text-decoration: none;color: black;">
+                                            <div class="followimg"><i class="fa-solid fa-user-tie"></i></div>
+                                            <div class="followname"><span><%=info%></span></div>
+                                        </a>
+                                        <div class="followbutton">
+                                            <button id="folbtn1" >Accept</button>
+                                            <button id="folbtn2">Ignore</button>
+                                        </div>
+                                    </div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                     <!-- Related Page 2 -->
+                    <div class="related-page" id="relatedPage2">
+                        <div class="followcontent">
+                            <div class="folluser">
+                                <div class="followimg"><i class="fa-solid fa-user-tie"></i></div>
+                                <div class="followname"><span>User name</span></div>
+                            </div>
+                    
+                            <% for(let user of Users) {%>
+                                <% if(!currUser._id.equals(user._id)) {%>
+                                    <div class="folluser">
+                                        <a href="<%=user.username%>" style="text-decoration: none;color: black;">
+                                            <div class="followimg"><i class="fa-solid fa-user-tie"></i></div>
+                                            <div class="followname"><span><%=user.username%></span></div>
+                                        </a>
+                                    </div>
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<% layout("/layouts/header") %>
+<body>
+    <div class="bodybox">
+        <div class="box">
+            <div class="edit-profile">
+                <h2>Edit Profile</h2>
+                <form method="post" action="/accounts/edit/<%= currUser._id %>?_method=PUT" enctype="multipart/form-data">
+                    <img class="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture">
+                    <label for="profileBioImg" class="edit-profile-img-btn">Change Profile Picture</label>
+                    <input type="file" id="profileBioImg"  name="profilePicture">
+                    
+                    <label for="username" style="font-size: larger;">Username:<strong><%= currUser.username %></strong></label>
+                    <label for="bio">Bio</label>
+                    <textarea id="profileBio" rows="4" placeholder="Your Bio" name="profileBio"></textarea>
+                    
+                    <button style="display: none;">Save Changes</button>
+                </form>
+            </div>
+        </div>
+         </div>
+</body>

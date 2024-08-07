@@ -1,0 +1,104 @@
+<% layout("/layouts/header") %>
+<body>
+    <div class="bodybox">
+        <div class="box">
+            <div class="sidebar">
+                <span>Leaderboard</span>
+                <hr>
+                <ul style="list-style-type:none;padding: 0%;">
+                    <li>
+                        <div class="gamecontent">
+                            <div class="gamecircle"><img src="/images/Free Fire.jpeg"></div>
+                            <div class="gamename">Free-Fire</div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="/leaderboard"><button style="width: 100%;background-color: black;color: wheat;">Show All</button></a>
+            </div>
+
+
+            
+            <div class="content">
+                <div class="storyPreview"></div>
+                <div class="story-Boxs">
+                    <div  class="story-Box">
+                        <% if(currUser) {%>
+                        <a href=/stories/<%=currUser.username%>><img src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg" alt="Stories"></a>
+                        <form id="storyForm" method="post" action="/story/<%= currUser._id %>?_method=PUT" enctype="multipart/form-data" >
+                        <% } %>
+                        <label for="storyImg"><div><i class="fa-solid fa-plus storyPlus" ></i></div></label>
+                        <input type="file" id="storyImg" name="storyImg" style="display: none;"> 
+                        </form>
+                        <span style="text-wrap: nowrap;">Your Story</span>
+                    </div>
+                    <% for(let dplist of DpLists) {%>
+                        <% if(currUser &&dplist.story.url  && !currUser._id.equals(dplist.owner._id)) {%>
+                    <div  class="story-Box">
+                        <a href=/stories/<%=dplist.owner.username%>><img src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg" alt="Stories"></a>
+                        <span style="text-wrap: nowrap;"><%=dplist.owner.username%></span>
+                    </div>
+                    <% } %>
+                    <% } %>
+                </div>
+                <div class="usercontent">
+                    <div class="usercircle"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="username">Unkonwn Patel</div>
+                </div>
+                <div class="userdis">hello my name is unkonwn patel</div>
+                <img src="/images/img.jpeg">
+                <hr>
+                <% if(currUser) {%>
+                <div id="self" style="display: none;"><%=currUser.username %></div>
+                <%  }%>
+                <% for(let listing of allListings) {%>
+                    <div class="usercontent">
+                        <a href="/<%=listing.owner.username%>">
+                        <div id="listId" style="display: none;"><%=listing._id  %></div>
+                        <div class="usercircle"><i class="fa-solid fa-user-tie"></i></div>
+                        <div class="username"><%=listing.owner.username%></div>
+                        </a>                            
+                        <div class="userEllipsis"><i class="fa-solid fa-ellipsis" ></i></div>
+                        <div id="userOptionId" class="userOption">
+                            <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
+                                <form method="get" action="/<%=listing.owner.username%>/<%=listing._id%>/edit"><button class="userOptionBtn">edit</button></form><hr>
+                                <form method="POST" action="/<%=listing.owner.username%>/<%=listing._id%>?_method=DELETE"><button class="userOptionBtn">delete</button></form><hr>
+                                <% } %>
+                            <button class="userOptionBtn" id="postCancel">cancel</button>
+                        </div>
+                    </div>
+                    <div class="userdis"><%=listing.description%></div>
+                    <img src="<%=listing.img.url%>" alt="image">
+                    <div class="userLikes">
+                        <i class="fa-regular fa-heart " style="cursor: pointer;" id="likeClassAdd" ></i>
+                        <a href="/<%=listing.owner.username%>/<%=listing._id%>">
+                            <i class="fa-regular fa-comment fa-rotate-270"></i>
+                        </a>
+                    </div>
+                    <div><span id="countLike"><%=listing.img.likes.length%></span><span style="margin-left: 1%;">likes</span></div>
+                    <hr>
+                <% } %>
+            </div>
+
+
+
+
+            <div class="tournament">
+                <span> Events List</span>
+                    <hr>
+                <div class="eventlist"> 
+                        <ul>
+                            <li>Velorenment Event in Silver Oak</li>
+                            <li>Bgmi In Nirma</li>
+                            <% for(let eveList of eveLists) {%>
+                            <a  href="/events/<%=eveList._id%>" style="color: black;text-decoration: none;"><li ><%=eveList.eventName%></li></a>
+                            <% } %>
+                        </ul>
+                    <button style="width: 100%;background-color: rgb(38, 29, 29);color: rgb(171, 115, 10);" id="showMore">Show more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+

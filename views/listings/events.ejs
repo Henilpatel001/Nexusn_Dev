@@ -1,0 +1,62 @@
+<% layout("/layouts/header") %>
+<body>
+    <div class="bodybox">
+        <div class="box">
+            <div class="eventbox">
+                <div class="eventtitle">
+                    <span id="evetxt1">Events</span>
+                    <button id="evetitbtn" onclick="togglePopup()">create an Event</button>
+                </div>
+
+                <div id="popupOverlay" class="overlay-container"> 
+                    <div class="popup-box"> 
+                        <h2 style="color: green;">Upload Post</h2> 
+                        <form class="form-container" method="post"  action="/events" enctype="multipart/form-data"> 
+                            <label class="form-label" for="eventName">Event Name</label> 
+                            <input class="form-input" type="text" placeholder="Enter Event Name" id="eventName" name="eventListing[eventName]" required> 
+                            <label class="form-label" for="eventName">Event location</label> 
+                            <input class="form-input" type="text" placeholder="Enter Event location"  name="eventListing[location]" required> 
+                            <label class="form-label" for="description">Description</label> 
+                            <input class="form-input" type="text" placeholder="Enter Img Description" id="description" name="eventListing[description]" required> 
+                            <label class="form-label" for="img">Upload a Photo</label> 
+                            <input class="form-input" type="file" id="img" name="eventListing[img]" required> 
+                            <button class="btn-submit" type="submit">Submit</button> 
+                        </form> 
+                        <button class="btn-close-popup"onclick="togglePopup()">Close</button> 
+                    </div>
+               </div>  
+
+               <span id="evetxt1">Top Events</span>
+                <div class="eventcontent">
+                    <div class="eventuser">
+                        <div class="eventimg"><img src="/images/Free fire.jpeg" width="100%" height="150"></div>
+                        <div class="eventname"><span id="evetxt3">Event name</span></div>
+                        <div class="eventdis"><span id="evetxt4">this is specially for bgmi fan club </span></div>
+                        <div class="eventbutton">
+                            <button id="evebtn1">View</button>
+                            <button id="evebtn2"><i class="fa-regular fa-share-from-square"></i></button>
+                        </div>
+                    </div>
+                      
+                        <% for(let listing of allListings) {%>
+                    <div class="eventuser">
+                        <div class="eventimg"><img src="<%=listing.img.url%>" width="100%" height="150"></div>
+                        <div class="eventname"><span id="evetxt3"><%=listing.eventName%> </span></div>
+                        <div class="eventdis"><span id="evetxt4"><%=listing.description%> </span></div>
+                        <div class="eventbutton">
+                            <form method="get" action="/events/<%=listing._id%>" ><button id="evebtn1">View</button></form>
+                            <button id="evebtn2"><i class="fa-regular fa-share-from-square"></i></button>
+                        </div>
+                        <div class="eventbutton">
+                            <form method="get" action="/events/<%=listing._id%>/edit" > <button id="evebtn3">edit</button></form>
+                            <form method="POST" action="/events/<%=listing._id%>?_method=DELETE" > <button id="evebtn3">delete</button></form>
+                        </div>
+                </div>
+                            <% } %>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

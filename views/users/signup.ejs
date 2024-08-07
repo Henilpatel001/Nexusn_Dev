@@ -1,0 +1,20 @@
+<% layout("/layouts/header") %>
+
+<body>
+    <div class="bodybox">
+        <div class="box">
+            <form class="signUpContainer" method="post" action="/signup">
+                <div class="logo">Ne<span style="color: black;">x</span>usn</div>
+                <h3 style="color: gray;">Sign Up to see Photos and Videos from your friends</h3>
+                <label class="signUpLabel" for="username">UserName</label>
+                <input class="signUpInp" type="text" placeholder="Enter UserName" name="username" required>
+                <label class="signUpLabel" for="email">Email-Id</label>
+                <input class="signUpInp" type="email" placeholder="Enter Email-Id" name="email" required>
+                <label class="signUpLabel" for="Password">Password</label>
+                <input class="signUpInp" type="password" placeholder="Enter password" name="password" required>
+                <button class="signUpBtn" type="submit">Sign Up</button>
+                <p>Have an account? <a href="/login">Log in</a></p>
+            </form>
+        </div>
+    </div>
+</body>

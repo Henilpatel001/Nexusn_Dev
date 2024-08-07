@@ -1,0 +1,36 @@
+<% layout("/layouts/header") %>
+<body style="background-color: #262626;">
+    <div class="bodybox">
+        <div class="box">
+            <div class="editPost">
+                <div>
+                    <h2 class="editPost_Heading">Edit your Post</h2><br>
+                    <p class="editPost_Heading">owned by: <%=chat.owner.username %></p>
+                    <form method="post" action="/<%=chat.owner.username %>/<%=chat.id%>?_method=PUT">
+                        <textarea name="listing[description]"><%=chat.description%></textarea><br>
+                        <button class="editPostBtn">Submit</button>
+                    </form>
+                </div>
+                <!-- <img src="/images/123.webp" alt="image" height="400" width="400"> -->
+                <img src="<%=chat.img.url%>" alt="image" height="400" width="400">
+    
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- why we use  /?_method=PATCH  because html send only two request get and post we send patch reqeust
+    first we donload npm i method-override then in form we write method of any post or get then write ?_method=PATCH
+    means they send patch reqesut insted of post reqesut -->

@@ -1,0 +1,18 @@
+<% layout("/layouts/header") %>
+
+<body >
+    <div class="bodybox">
+        <div class="box">
+            <form class="signUpContainer" method="post" action="/login">
+                <div class="logo">Ne<span style="color: black;">x</span>usn</div>
+                <h3 style="color: gray;">Log In</h3>
+                <label class="signUpLabel" for="username">UserName</label>
+                <input class="signUpInp" type="text" placeholder="Enter UserName" name="username" required>
+                <label class="signUpLabel" for="Password">Password</label>
+                <input class="signUpInp" type="password" placeholder="Enter password" name="password" required>
+                <button class="signUpBtn" type="submit">Log In</button>
+                <p>Don't have an account? <a href="/signUp">Sign-Up</a></p>
+            </form>
+        </div>
+    </div>
+</body>

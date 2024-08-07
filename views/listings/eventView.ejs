@@ -1,0 +1,30 @@
+<% layout("/layouts/header") %>
+<script>
+const mapToken="<%=process.env.MAP_TOKEN%>";
+const eveView=<%-JSON.stringify(eveView)%>;
+</script>
+
+
+<body style="background-color: #183245;">
+    <div class="bodybox">
+        <div class="box">
+            <div class="eventsView">
+                <div>
+                    <h2 class="eventsView_Heading">Events Info</h2><br>
+                    <p class="eventsView_Heading">Event_Name: <%=eveView.eventName %></p><br>
+                    <p class="eventsView_Heading">Event_Description: <%=eveView.description %></p><br>
+                    <p class="eventsView_Heading">Event_Location: <%=eveView.location %></p><br>
+                    <!-- <img src="<%=eveView.img.url%>" width="100%" height="150"> -->
+                    <div id="map"></div>
+                </div>
+                <img src="/images/123.webp" alt="image" height="auto" width="400">
+            </div>
+        </div>
+    </div>
+</body>
+    
+
+
+
+<script src="/js/map.js"></script>
+

@@ -1,0 +1,61 @@
+<% layout("/layouts/header") %>
+<body>
+    <div class="bodybox">
+        <div class="box" style="margin: 0%;">
+            <div class="messbox">
+                <!-- <div class="messheader">
+                    <div style="display:flex;flex-grow: 1;align-items: center;">
+                        <span style="font-size: x-large;margin-right: 1%;">Messaging</span>
+                        <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search" aria-expanded="false"></div>
+                    </div>
+                        <button id="messdot"><i class="fa-solid fa-ellipsis"></i></button>
+                        <button id="messpen"><i class="fa-regular fa-pen-to-square"></i></button>
+                </div> -->
+                <!-- <hr style="margin: 0%;"> -->
+                <!-- <hr style="margin: 0%;"> -->
+                <!-- <div class="messtitle">
+                    <button id="now" class="messfix">Now</button>
+                    <button id="unread" class="messfix">Unread</button>
+                    <button id="myconnec" class="messfix">My connections</button>
+                    <button id="starred" class="messfix">Starred</button>
+                </div> -->
+                <hr style="margin: 0%;">
+                <div class="messcontent">
+                    <div style="width: 41%;overflow-y: scroll;height: 535px;background-color: gainsboro;">
+                        <% for (let user of users) {%>
+                            <% if(!currUser._id.equals(user._id)) {%>
+                            <div class="messuser">
+                                <div class="messimg"><i class="fa-solid fa-user-tie"></i></div>
+                                <div>
+                                    <div id="userId" style="display: none;"><%=user._id%></div>
+                                    <div class="messname"><span style="font-weight: 500;"><%=user.username%></span></div>
+                                    <div class="messdec"><span style="color: gray;">Patel:Ram Ram &#x1F64F</span></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <%}%>
+                            <% } %>
+                    </div>
+                    
+                    <div class="displayMessage">
+                        <div class="message-header">
+                            <img src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg" alt="Profile" >
+                            <span style="font-weight: bold;margin-left: 2%;position: absolute;top: 21px;" id="displayName">Unkonwn</span>
+                        </div>
+                        <hr style="margin: 0%;">
+                        <div class="messages">
+                            <div class="chat-container"></div>
+                        </div>
+                        <!-- <form id="form" action=""> -->
+                        <div class="input">
+                            <input  id="chat-input" class="chat-input" type="text" placeholder="Message...">
+                            <button id="send-button" >Send</button>
+                        </div> 
+                        <!-- </form> -->
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

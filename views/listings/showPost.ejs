@@ -1,0 +1,57 @@
+<% layout("/layouts/header") %>
+
+
+ <!-- ///////show post/////// -->
+ <div class="post-container" >
+    <div class="post-image">
+        <img src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg" alt="image" height="200" width="200">  
+    </div>
+    <div class="post-header">
+        <div style="display: flex;">
+            <img class="profile-picture" src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg" alt="Profile Picture">
+            <!-- <img src="<%=listing.img.url%>" alt="image" height="200" width="200"> -->
+            <div class="profUser">
+                <%= listing.owner.username %>
+                <% if(!currUser._id.equals(listing.owner._id) && !profileInfo.followers.includes( currUser.username)) {%>
+                    <button class="follow-button" id="followBtn"  onclick="toggleRequested()">Follow</button>
+                 <% } %>
+            </div>
+            <% if(currUser._id.equals(listing.owner._id)) {%>
+            <div class="userEllipsis"><i class="fa-solid fa-ellipsis" ></i></div>
+                <div id="userOptionId" class="userOption">
+                    <form method="get" action="/profile/<%=listing._id%>/edit"><button class="userOptionBtn">edit</button></form><hr>
+                    <form method="POST" action="/profile/<%=listing._id%>?_method=DELETE"><button class="userOptionBtn">delete</button></form><hr>
+                    <button class="userOptionBtn" id="postCancel">cancel</button>
+            </div>
+            <% } %>   
+            <a href="/<%= listing.owner.username %>"><div style="position: relative;left: 20%;"><i class="fa-solid fa-xmark" style="font-size: xx-large;"></i></div></a>
+        </div>
+        <hr>
+        <span id="self" style="display: none;"><%=currUser.username%></span>
+        <span id="listId" style="display: none;"><%=listing._id%></span>
+        <div class="comments-container">
+            <div class="comment">
+                <!-- <img src="profile1.jpg" alt="Profile Picture"> -->
+                <div class="comment-content">
+                    <p><strong><%= listing.owner.username %></strong> <%=listing.description%></p>
+                    <span>2h ago</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="position: absolute;bottom: 0;width:-webkit-fill-available;">
+            <hr>
+            <div class="userLikes">
+                <i class="fa-regular fa-heart " style="cursor: pointer;" id="likeClassAdd" ></i>
+                <i class="fa-solid fa-share-from-square"></i>
+            </div>
+            <div><span id="countLike"><%=listing.img.likes.length%></span><span style="margin-left: 1%;">likes</span></div>
+            <div style="display:flex;">
+                <textarea id="new-comment-text" class="comments" placeholder="Add a comment..."  rows="1" autocomplete="off"></textarea>
+                <span class="postBtn"  onclick="postComment()">post</span>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

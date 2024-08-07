@@ -1,0 +1,28 @@
+<% layout("/layouts/header") %>
+<body style="background-color: #000000;">
+    <div class="bodybox">
+        <div class="box">
+            <div class="eventEdit">
+                <div>
+                    <h2 class="eventEdit_Heading">Edit your Post</h2><br>
+                    <form method="post" action="/events/<%=chat.id%>?_method=PUT" enctype="multipart/form-data">
+                        <label class="eventEdit_Heading">Enter event Name</label>
+                        <textarea  name="eventName"><%=chat.eventName%></textarea><br>
+                        <label class="eventEdit_Heading">Enter event location</label>
+                        <textarea  name="location"><%=chat.location%></textarea><br>
+                        <label class="eventEdit_Heading">Enter event Description</label>
+                        <textarea  name="description"><%=chat.description%></textarea><br><br>
+                        
+                        <label class="form-label eventEdit_Heading" for="img">Upload a New Photo</label> 
+                        <input class="form-input" type="file" id="img" name="img" > 
+                        <button class="eventEditBtn">Submit</button>
+                    </form>
+                </div>
+                <!-- <img src="/images/123.webp" alt="image" height="400" width="400"> -->
+                <img src="<%=oriImg%>" alt="image" height="400" width="400">
+    
+            </div>
+        </div>
+    </div>
+</body>
+
