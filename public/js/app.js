@@ -680,3 +680,26 @@ sendButton.addEventListener('click', () => {
 //     }
 // });
 
+
+/////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////Header opetions btn  highlight///////////////////////
+const navLinks = document.querySelectorAll('.material-symbols-outlined');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+        localStorage.setItem('activeIcon', link.getAttribute('data-icon'));
+    });
+});
+
+window.onload = function() {
+    const activeIcon = localStorage.getItem('activeIcon');
+    if (activeIcon) {
+        const iconToActivate = document.querySelector(`.material-symbols-outlined[data-icon="${activeIcon}"]`);
+        const font = document.querySelector(`.material-symbols-outlined[data-icon="${activeIcon}"]`).nextElementSibling;
+        if (iconToActivate) {
+            iconToActivate.classList.add('active');
+            font.classList.add('activeFont');
+        }
+    }
+};

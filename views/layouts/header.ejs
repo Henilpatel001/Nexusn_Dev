@@ -26,30 +26,32 @@
 <body>
     <div class="main">
         <div class="header">
-            <div class="logo">Ne<span style="color: black;">x</span>usn</div>
-            <div class="searchBox">
-                <div class="search">
+            <div style="display: flex;">
+                <div class="logo"><a style="color: inherit;text-decoration: none;" href="/">Ne<span style="color: black;">x</span>usn</a></div>
+                <div class="searchBox">
+                    <div class="search">
                         <input type="text" placeholder="Search Nexusn.In" aria-expanded="false" class="searchInput">
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>  
-                <div class="resultBox">
-                   <!-- <ul>w</ul> -->
+                    </div>  
+                    <div class="resultBox">
+                        <!-- <ul>w</ul> -->
+                    </div>
                 </div>
             </div>
             
-            <div class="home fix"><a href="/"> <i class="fa-solid fa-house"></i></a><span class="fix_font">Home</span></div>
-            <div class="follower fix"><a href="/followers"><i class="fa-solid fa-users"></i></a><span class="fix_font">Followers</span></div>
-            <div class="events fix"><a href="/events"><i class="fa-solid fa-calendar-day"></i></a><span class="fix_font">Events</span></div>
-            <div class="notification fix"><a href="/notification"><i class="fa-solid fa-envelope-open-text"></i></a><span class="fix_font">Notification</span></div>
-            <div class="message fix"><a href="/message"><i class="fa-solid fa-message"></i></a><span class="fix_font">Message</span></div>
+            <div class="nav"><a href="/"><div class="home fix"><span class="material-symbols-outlined" data-icon="home">home</span><span class="fix_font">Home</span></div></a></div>
+            <div class="nav"><a href="/followers"><div class="follower fix"><span class="material-symbols-outlined" data-icon="follow">group</span><span class="fix_font">Followers</span></div></a></div>
+            <div class="nav"><a href="/events"><div class="events fix"><span class="material-symbols-outlined" data-icon="event">event</span><span class="fix_font">Events</span></div></a></div>
+            <div class="nav"><a href="/notification"><div class="notification fix"><span class="material-symbols-outlined" data-icon="notification">mark_email_unread</span><span class="fix_font">Notification</span></div></a></div>
+            <div class="nav"><a href="/message"><div class="message fix"><span class="material-symbols-outlined" data-icon="message">chat_bubble</span><span class="fix_font">Message</span></div></a></div>
             <% if(currUser) {%>
-            <div class="profile fix"><a href="/<%=currUser.username%>"><i class="fa-solid fa-user"></i></a><span class="fix_font">Profile</span></div>
-            <a href="/logout">Log Out</a>
+            <div class="nav"><a href="/<%=currUser.username%>"><div class="profile fix"><span class="material-symbols-outlined" data-icon="profile">person</span><span class="fix_font">Profile</span></div></a></div>
+            <!-- <a href="/logout"><button class="signBtn">Log Out</button></a> -->
             <% } %>
 
             <% if (!currUser) {%>
-                <a href="/signup">Sign-Up</a>
-                <a href="/login">Sign-In</a>
+                <a href="/signup"><button class="signBtn">Sign-Up</button></a>
+                <a href="/login"><button class="signBtn">Sign-In</button></a>
             <%} %>
         </div>
 
@@ -71,7 +73,7 @@
         <%- body %>
     </div>
      <!-- /////////////////////Java Scirpt/////////////// -->
-     <script src="/js/app.js"></script>
+     <script src="/js/app.js" defer></script>
      <!-- <script src="/socket.io/socket.io.js"></script>for socket  -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script><!--for date formating in messaing-->
 </body>

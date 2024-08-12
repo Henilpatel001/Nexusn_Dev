@@ -225,7 +225,7 @@ app.delete('/unlikes', async(req, res) => {
    await Listing.updateOne({_id:id},{ $pull: { 'img.likes': req.user.username }});
 });
 
-app.use("/message",messageRoute);
+app.use("/message",isLoggedIn,messageRoute);
 app.use("/events",eventsRoute);
 app.use("/",userRoute);
 app.use("/:username",isLoggedIn,profileRoute);
