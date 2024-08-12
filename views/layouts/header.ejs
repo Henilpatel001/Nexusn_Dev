@@ -46,13 +46,13 @@
             <div class="nav"><a href="/message"><div class="message fix"><span class="material-symbols-outlined" data-icon="message">chat_bubble</span><span class="fix_font">Message</span></div></a></div>
             <% if(currUser) {%>
             <div class="nav"><a href="/<%=currUser.username%>"><div class="profile fix"><span class="material-symbols-outlined" data-icon="profile">person</span><span class="fix_font">Profile</span></div></a></div>
-            <!-- <a href="/logout"><button class="signBtn">Log Out</button></a> -->
+            <a href="/logout"><button class="signBtn" id="logout" style="display: none;">Log Out</button></a>
             <% } %>
 
-            <% if (!currUser) {%>
+            <!-- <% if (!currUser) {%>
                 <a href="/signup"><button class="signBtn">Sign-Up</button></a>
                 <a href="/login"><button class="signBtn">Sign-In</button></a>
-            <%} %>
+            <%} %> -->
         </div>
 
         <!-- ////////////////////this is for flash message -->

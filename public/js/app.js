@@ -703,3 +703,15 @@ window.onload = function() {
         }
     }
 };
+
+/////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////Show Login option in profile/////////////////////////
+const setting=document.querySelector('.setting');
+setting.addEventListener('click', ()=> {
+    const logout = document.getElementById('logout');
+    if (logout.style.display === 'none' || logout.style.display === '') {
+        logout.style.display = 'block';
+    } else {
+        logout.style.display = 'none';
+    }
+});

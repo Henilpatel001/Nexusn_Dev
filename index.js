@@ -115,29 +115,8 @@ app.listen(port, () => {
 });
 
 
-app.post("/authenticate", async (req, res) => {//for message chat
-    const { username } = req.body;
-    return res.json({ username: username, secret: "Nexusn123" });
-  });
 
-  
-app.post("/authenticate", async (req, res) => {//for message chat
-    const { username } = req.body;
-    // Get or create user on Chat Engine!
-    try {
-      const r = await axios.put(
-        "https://api.chatengine.io/users/",
-        { username: username, secret: username, first_name: username },
-        { headers: { "Private-Key": "9cbef24a-a65f-4f0b-88b6-3b6884376b79" } }
-      );
-      return res.status(r.status).json(r.data);
-    } catch (e) {
-      return res.status(e.response.status).json(e.response.data);
-    }
-  });
-
-
-app.get("/",saveRedirectUrl, wrapAsync(async(req, res,next) => {
+app.get("/",saveRedirectUrl,isLoggedIn, wrapAsync(async(req, res,next) => {
     const allListings=await Listing.find({}).populate("owner");
     const eveLists=await eventListing.find({});
     const DpLists=await DpListing.find({}).populate("owner");

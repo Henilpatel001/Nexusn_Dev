@@ -157,7 +157,7 @@ button .fa-solid{
 }
 .box {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .sidebar {
@@ -361,6 +361,7 @@ ul {
     }.content{
         width: -webkit-fill-available;
     }.tournament{
+        z-index: -1;
         width: max-content;
         top: 310px;
         height: fit-content;
@@ -800,6 +801,10 @@ ul {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+}.setting{
+    margin-top: 3.20%;
+    float: right;
+    cursor: pointer;
 }.follow-button{
     color: white;
     border: none;
